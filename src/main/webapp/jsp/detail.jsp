@@ -66,8 +66,7 @@
                         <a id="expand-right-column" data-expanded="false"><i class="fas fa-angle-double-left"></i></a>
                     </div>
                     <div id="right-column-content">
-                        {{asString this}}
-                    	{{#ifCond this.files.length '<' 1000}}
+                    	{{#ifCond this.files.length '<' 10}}
                         	{{&main-file-table}}
                     	{{else}}
                         	{{&big-file-table}}
@@ -460,6 +459,7 @@
                     </tr>
                 </table>
         </script>
+        <script src="${contextPath}/js/DetailRenderer.js"></script>
         <script src="${contextPath}/js/detail.js"></script>
     </jsp:attribute>
     <jsp:body>

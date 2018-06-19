@@ -128,3 +128,26 @@ function showProjectBanner(data) {
 function formatNumber(s) {
     return new Number(s).toLocaleString();
 }
+
+String.format = function() {
+    var s = arguments[0];
+    for (var i = 0; i < arguments.length - 1; i++) {
+        var reg = new RegExp("\\{" + i + "\\}", "gm");
+        s = s.replace(reg, arguments[i + 1]);
+    }
+
+    return s;
+};
+
+$.fn.groupBy = function(fn) {
+    var arr = $(this),grouped = {};
+    $.each(arr, function (i, o) {
+        key = fn(o);
+        if (typeof(grouped[key]) === "undefined") {
+            grouped[key] = [];
+        }
+        grouped[key].push(o);
+    });
+
+    return grouped;
+};
